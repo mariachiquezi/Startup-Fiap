@@ -1,0 +1,62 @@
+﻿
+<!--falar para view qual o objeto vinculado a ela(gerando uma coleção -o modelo eh uma lista de representante model-->
+@model IEnumerable<SustentavelStartUp.Models.UsuarioModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Usuarios</title>
+</head>
+<body>
+    <h1>Usuarios</h1>
+    <p>
+        <!-- uso de TagHelpers para definir o Controller e a Action -->
+        <a asp-controller="Usuario" asp-action="Cadastrar">Novo Usuario</a>
+    </p>
+    <!--a tabela html-->
+    <table class="table" border="1">
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th></th>
+        </tr>
+        <!--aqui entramos no c# novamente-->
+        <!--estamos fazendo um foreach no model, para cada item de lista de presentantes eu to gerando um item-->
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <label>@item.IdUsuario</label>
+                </td>
+                <td>
+                    <label>@item.NomeUsuario</label>
+                </td>
+                <td>
+                    <label>@item.Email</label>
+                </td>
+                <td>
+                    <label>@item.Telefone</label>
+                </td>
+                <td>
+
+                    <!-- asp-route-id é usado para informar o Id do Item selecionado. -->
+                    <a asp-controller="Usuario" 
+                        asp-action="Editar"
+                        asp-route-id="@item.IdUsuario">Editar</a>
+
+                    <a asp-controller="Usuario" 
+                        asp-action="Consultar"
+                        asp-route-id="@item.IdUsuario">Consultar</a>
+
+                    <a asp-controller="Usuario" 
+                        asp-action="Excluir"
+                        asp-route-id="@item.IdUsuario">Excluir</a>
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

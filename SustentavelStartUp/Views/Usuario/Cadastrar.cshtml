@@ -1,0 +1,61 @@
+﻿
+@model SustentavelStartUp.Models.UsuarioModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Usuario - Cadastrar</title>
+</head>
+<body>
+    <h1>Usuario - Cadastrar</h1>
+
+    <!-- formulário HTML com Tag Helpers-->
+    <form asp-action="Cadastrar" asp-controller="Usuario" method="post">
+        <div class="form-horizontal">
+            <hr />
+            <!--Trecho de validação para ver se existe mensagem a ser recebida-->
+            @if (!Html.ViewData.ModelState.IsValid)
+            {
+                   <!--tag para exibicao de lista de erros-->
+             <div asp-validation-summary="All" class="alert alert-danger"></div>
+            }
+
+            <div class="form-group">
+                <label>Nome:</label>
+                <div class="col-md-10">
+                    <!-- Caixa de Texto -->
+                    <input asp-for="NomeUsuario" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Email:</label>
+                <div class="col-md-10">
+                    <!-- Caixa de Texto -->
+                    <input asp-for="Email"  />
+                </div>
+
+            <div class="form-group">
+                <label>Telefone:</label>
+                <div class="col-md-10">
+                    <!-- Caixa de Texto -->
+                    <input asp-for="Telefone"  />
+                </div>
+            </div>
+            <hr />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <a asp-controller="Usuario" asp-action="Index" class="btn btn-warning">Voltar</a>
+                    <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                </div>
+            </div>
+            <hr />
+        </div>
+        </div>
+    </form>
+
+    
+</body>
+</html>
